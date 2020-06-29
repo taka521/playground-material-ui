@@ -1,5 +1,4 @@
 import { Book } from "../../type/Book";
-import { useState } from "react";
 
 export type UseFetchBooksResult = {
   data?: Book[];
