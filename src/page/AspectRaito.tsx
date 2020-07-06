@@ -8,6 +8,7 @@ import {
   ListItem,
   List,
 } from "@material-ui/core";
+import { useAspectRatio } from "use-aspect-ratio";
 
 type AspectRaito = "wide" | "normal" | "square";
 
@@ -21,39 +22,32 @@ const useStyles = makeStyles(() =>
       width: "100%",
       maxWidth: props.width,
     }),
-    media: (props: StyleProps) => ({
-      ...(props.aspect && {
-        height: calcHeight(props.width, props.aspect),
-      }),
-    }),
   })
 );
-
-function calcHeight(width: string | number, aspect: AspectRaito) {
-  if (typeof width === "string") return "auto";
-  switch (aspect) {
-    case "normal":
-      return (width / 4) * 3;
-    case "wide":
-      return (width / 16) * 9;
-    case "square":
-      return width;
-    default:
-      return "100%";
-  }
-}
 
 type Props = {
   width?: string | number;
   aspect?: AspectRaito;
   image: string;
 };
+
+const raito: { [key in AspectRaito]: number } = {
+  wide: 16 / 9,
+  normal: 4 / 3,
+  square: 1,
+};
 const ImageComponent: React.FC<Props> = ({ width = "100%", aspect, image }) => {
   const classes = useStyles({ width, aspect });
+  const ref = useAspectRatio(aspect ? raito[aspect] : 1);
+
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia component="img" className={classes.media} image={image} />
+        <CardMedia
+          ref={aspect ? ref : undefined}
+          image={image}
+          component="img"
+        />
       </CardActionArea>
     </Card>
   );

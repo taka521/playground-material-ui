@@ -10891,6 +10891,11 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+use-aspect-ratio@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/use-aspect-ratio/-/use-aspect-ratio-1.0.3.tgz#d17673ec4694bb6cac45957464861bca930aa5cb"
+  integrity sha512-yIi+XViOkvEspk7TyVsuYSxoADJl9Xv+v5bx2TvRoPFgOoLTkcCKAh9km7/SIC6ra0yBQVqYh6/eG/XPyBd/tA==
+
 use-memo-one@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/use-memo-one/-/use-memo-one-1.1.1.tgz#39e6f08fe27e422a7d7b234b5f9056af313bd22c"
